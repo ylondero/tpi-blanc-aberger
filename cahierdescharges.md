@@ -71,14 +71,13 @@ Pauses : 20 minutes le matin / 15 minutes l'après-midi
 - Connaissances en virtualisation (VM, containers)
 - Bonnes bases Linux (CLI, networking, services système)
 - Connaissances Docker et docker-compose
-- Bases Proxmox VE
 - Compréhension des réseaux (VLAN, routage, NAT)
 
 ---
 
 ## 6. DESCRIPTIF DU PROJET
 
-Antoine sera chargé de mettre en place une infrastructure virtualisée complète basée sur Proxmox VE. Le projet consiste à créer 2-3 machines virtuelles (ou containers LXC) hébergeant des services Docker qui devront communiquer entre eux pour former une stack applicative fonctionnelle.
+Antoine sera chargé de mettre en place une infrastructure virtualisée complète basée sur Proxmox VE. Le projet consiste à créer 2 machines virtuelles hébergeant des services Docker qui devront communiquer entre eux pour former une stack applicative fonctionnelle.
 
 ### Objectifs principaux
 
@@ -88,7 +87,7 @@ Antoine sera chargé de mettre en place une infrastructure virtualisée complèt
    - Configuration du stockage
 
 2. **Déploiement de VMs/Containers**
-   - Création de 2-3 VMs ou containers LXC
+   - Création de 2 VMs 
    - Installation de Docker sur chaque instance
    - Configuration réseau pour permettre la communication inter-VMs
 
@@ -232,21 +231,21 @@ Le travail sera évalué sur les 7 points spécifiques suivants :
 
 ## ANNEXE : Suggestions d'applications
 
-Si le candidat manque d'idées pour la stack applicative, voici quelques suggestions simples :
+Si tu manques d'idées pour la stack applicaative, voici quelques suggestions :
 
-**Option 1 - Blog WordPress**
+**Option 1 - Blog WordPress(moyen)**
 - VM1 : Nginx reverse proxy
 - VM2 : WordPress (PHP + Apache)
 - VM3 : MySQL
 
-**Option 2 - Stack Node.js**
+**Option 2 - Stack Node.js(difficile)**
 - VM1 : Traefik reverse proxy
 - VM2 : Application Node.js (Express + React)
 - VM3 : MongoDB
 
-**Option 3 - Monitoring**
+**Option 3 - Monitoring (difficile++)**
 - VM1 : Nginx + Grafana
 - VM2 : Prometheus
 - VM3 : Base de données TimeSeries
 
-Le candidat est libre de choisir sa stack mais doit la valider avec le chef de projet le jour 1.
+Tu es libre de choisir ta stack, mais tu dois me la valider jour 1.
