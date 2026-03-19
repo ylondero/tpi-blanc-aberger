@@ -127,7 +127,7 @@ Antoine sera chargé de mettre en place une infrastructure virtualisée complèt
 - Accès interface web et configuration sécurité de base
 
 **Étape 2 : Planification de l'infrastructure**
-- Définir l'architecture réseau (bridges, VLANs si nécessaire)
+- Définir l'architecture réseau
 - Planifier la répartition des ressources (CPU, RAM, disque)
 - Définir la stack applicative à déployer
 
@@ -238,12 +238,12 @@ Si tu manques d'idées pour la stack applicaative, voici quelques suggestions :
 - VM2 : WordPress (PHP + Apache)
 - VM3 : MySQL
 
-**Option 2 - Stack Node.js(difficile)**
+**Option 2 - Stack Node.js**
 - VM1 : Traefik reverse proxy
 - VM2 : Application Node.js (Express + React)
 - VM3 : MongoDB
 
-**Option 3 - Monitoring (difficile++)**
+**Option 3 - Monitoring**
 - VM1 : Nginx + Grafana
 - VM2 : Prometheus
 - VM3 : Base de données TimeSeries
