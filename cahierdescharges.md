@@ -101,87 +101,55 @@ Antoine sera chargé de mettre en place une infrastructure virtualisée complèt
    - Procédures de déploiement
    - Architecture et schémas réseau
 
-### Exemple de stack suggérée
+Stack suggérée
 
-**VM1 - Reverse Proxy**
-- Nginx ou Traefik en container Docker
-- Gestion du routage vers les autres services
-
-**VM2 - Application**
-- Application web (Node.js, Python, PHP, etc.) en container
-- Communique avec la base de données sur VM3
-
-**VM3 - Base de données**
-- PostgreSQL, MySQL ou MongoDB en container
-- Accessible uniquement depuis VM2 (sécurité réseau)
+**Service de gestion de tâches**
+- VM1 : Nginx reverse proxy
+- VM2 : Application Kanboard (outil de gestion de projets open-source, déjà packagé)
+- VM3 : SQLite ou PostgreSQL
+- **Besoin** : Interface web fonctionnelle pour créer/voir des tâches
 
 ---
 
 ## 7. ÉTAPES DU PROJET
 
+Avant de commencer, tu dois créer un diagramme de Gantt ou un planning détaillé.
+
 ### Jour 1 - Installation et configuration de base
 
-**Étape 1 : Installation Proxmox VE**
-- Installer Proxmox VE sur le serveur
-- Configuration initiale (réseau, stockage, updates)
-- Accès interface web et configuration sécurité de base
+**Étape 1 : Planification de l'infrastructure**
 
-**Étape 2 : Planification de l'infrastructure**
 - Définir l'architecture réseau
-- Planifier la répartition des ressources (CPU, RAM, disque)
-- Définir la stack applicative à déployer
 
-**Étape 3 : Création des VMs/Containers**
-- Créer 2-3 VMs Ubuntu Server ou containers LXC
-- Configuration réseau de chaque VM
-- Installation de Docker et docker-compose sur chaque instance
-- Test de connectivité entre les VMs
+**Objectif 2 : Communication inter-VMs sécurisée**
+- Les VMs peuvent se pinguer entre elles
+- Configuration réseau documentée (adresses IP, routes, firewall)
+- La base de données n'est accessible QUE depuis la VM application (pas depuis l'extérieur)
 
-### Jour 2 - Déploiement des services Docker
+**Objectif 3 : Stack applicative fonctionnelle**
+- Tous les services Docker déployés via docker-compose
+- Le reverse proxy route correctement vers l'application
+- L'application communique avec la base de données
+- 
+**Objectif 4 : Persistance et résilience**
+- Les données persistent après redémarrage des containers
+- Au moins un snapshot Proxmox créé et testé
+- Procédure de restauration documentée
 
-**Étape 4 : Configuration du reverse proxy (VM1)**
-- Déployer Nginx ou Traefik via Docker
-- Configuration des routes vers les autres services
-- Mise en place des certificats SSL (self-signed acceptable)
+**Objectif 5 : Documentation professionnelle**
+- Architecture réseau avec schéma clair (draw.io, excalidraw, etc.)
+- README.md structuré avec procédure d'installation
+- Tous les fichiers de configuration commentés
+- Journal de travail quotidien avec problèmes rencontrés et solutions
 
-**Étape 5 : Déploiement de l'application (VM2)**
-- Choisir et déployer une application web simple
-- Configuration docker-compose
-- Variables d'environnement pour connexion base de données
-- Test local de l'application
+### Gestion du temps recommandée
 
-**Étape 6 : Déploiement de la base de données (VM3)**
-- Déployer PostgreSQL/MySQL/MongoDB via Docker
-- Configuration sécurité (restriction accès réseau)
-- Création de la base et utilisateur pour l'application
-- Test de connexion depuis VM2
+- **Analyse et planification** : ~10% (2.5h)
+- **Implémentation** : ~60% (14.5h)
+- **Tests et validation** : ~5% (1h)
+- **Documentation** : ~25% (6h)
 
-**Étape 7 : Interconnexion des services**
-- Vérifier la communication entre tous les services
-- Tester le flux complet : Reverse Proxy → App → DB
-- Résolution des problèmes de connectivité
-- Validation fonctionnelle de la stack complète
-
-### Jour 3 - Tests, optimisation et documentation
-
-**Étape 8 : Tests et validation**
-- Tests fonctionnels complets de la stack
-- Vérification des logs de chaque service
-- Test de résilience (redémarrage d'un service)
-- Validation des performances de base
-
-**Étape 9 : Snapshots et backup**
-- Création de snapshots Proxmox des VMs
-- Documentation de la procédure de backup
-- Test de restauration d'un snapshot
-
-**Étape 10 : Documentation complète**
-- Architecture et schémas réseau
-- Procédure d'installation pas à pas
-- Configuration de chaque service
-- Fichiers docker-compose documentés
-- Procédures de troubleshooting
-- README.md structuré
+⚠️ **Important** : Ces pourcentages sont indicatifs. C'est à toi de gérer ton temps pour atteindre tous les objectifs dans les 24h imparties.
 
 ---
 
@@ -219,33 +187,3 @@ Le travail sera évalué sur les 7 points spécifiques suivants :
 7. **Gestion des snapshots** : Au moins un snapshot Proxmox est créé et la procédure de restauration est documentée.
 
 ---
-
-## 10. VALIDATION
-
-| | Lu et approuvé le : | Signature : |
-|---|---|---|
-| **Candidat** : | | |
-| **Chef de projet** : | | |
-
----
-
-## ANNEXE : Suggestions d'applications
-
-Si tu manques d'idées pour la stack applicaative, voici quelques suggestions :
-
-**Option 1 - Blog WordPress(moyen)**
-- VM1 : Nginx reverse proxy
-- VM2 : WordPress (PHP + Apache)
-- VM3 : MySQL
-
-**Option 2 - Stack Node.js**
-- VM1 : Traefik reverse proxy
-- VM2 : Application Node.js (Express + React)
-- VM3 : MongoDB
-
-**Option 3 - Monitoring**
-- VM1 : Nginx + Grafana
-- VM2 : Prometheus
-- VM3 : Base de données TimeSeries
-
-Tu es libre de choisir ta stack, mais tu dois me la valider jour 1.
