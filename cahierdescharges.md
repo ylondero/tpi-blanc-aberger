@@ -59,7 +59,7 @@ Pauses : 20 minutes le matin / 15 minutes l'après-midi
 
 ## 4. MATÉRIEL ET LOGICIEL À DISPOSITION
 
-- Un serveur physique ou VM puissante pour installer Proxmox VE
+- VM puissante (xaas) pour installer Proxmox VE
 - Accès réseau et internet
 - Documentation personnelle et accès à la documentation officielle Proxmox
 - Accès aux repos Docker Hub
