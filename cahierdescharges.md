@@ -138,7 +138,7 @@ Avant de commencer, tu dois créer un diagramme de Gantt ou un planning détaill
 
 **Objectif 5 : Documentation professionnelle**
 - Architecture réseau avec schéma clair (draw.io, excalidraw, etc.)
-- README.md structuré avec procédure d'installation
+- README structuré avec procédure d'installation
 - Tous les fichiers de configuration commentés
 - Journal de travail quotidien avec problèmes rencontrés et solutions
 
